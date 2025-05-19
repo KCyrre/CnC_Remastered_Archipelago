@@ -732,7 +732,9 @@ bool HouseClass::Can_Build(TechnoTypeClass const * type, HousesType house) const
 	}			
 
 	if (Debug_Cheat) level = 98;
-	return((pre & flags) == pre && type->Scenario <= level);
+	//return((pre & flags) == pre && type->Scenario <= level);
+	//SLM - If I've done this right, it should entirely disregard tech level here...
+	return((pre & flags) == pre);
 }
 
 
