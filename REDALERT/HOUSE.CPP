@@ -857,7 +857,9 @@ bool HouseClass::Can_Build(ObjectTypeClass const * type, HousesType house) const
 	/*
 	**	See if the prerequisite requirements have been met.
 	*/
-	return((pre & flags) == pre && ((TechnoTypeClass const *)type)->Level <= (unsigned)level);
+	//return((pre & flags) == pre && ((TechnoTypeClass const *)type)->Level <= (unsigned)level);
+	//SLM - If I've done this right, it should entirely disregard tech level here...
+	return((pre & flags) == pre);
 }
 
 

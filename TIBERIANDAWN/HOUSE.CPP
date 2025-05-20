@@ -623,25 +623,25 @@ bool HouseClass::Can_Build(TechnoTypeClass const * type, HousesType house) const
 	**	Special case check to ensure that GDI doesn't get the bazooka guy
 	**	until mission #8.
 	*/
-	if (house == HOUSE_GOOD &&
-		type->What_Am_I() == RTTI_INFANTRYTYPE &&
-		((InfantryTypeClass const *)type)->Type == INFANTRY_E3 &&
-		level < 7) {
+	//if (house == HOUSE_GOOD &&
+	//	type->What_Am_I() == RTTI_INFANTRYTYPE &&
+	//	((InfantryTypeClass const *)type)->Type == INFANTRY_E3 &&
+	//	level < 7) {
 
-		return(false);
-	}
+	//	return(false);
+	//}
 
 	/*
 	**	Special check to allow GDI to build the MSAM by mission #9
 	**	and no sooner.
 	*/
-	if (house == HOUSE_GOOD &&
-		type->What_Am_I() == RTTI_UNITTYPE &&
-		((UnitTypeClass const *)type)->Type == UNIT_MLRS &&
-		level < 9) {
+	//if (house == HOUSE_GOOD &&
+	//	type->What_Am_I() == RTTI_UNITTYPE &&
+	//	((UnitTypeClass const *)type)->Type == UNIT_MLRS &&
+	//	level < 9) {
 
-		return(false);
-	}
+	//	return(false);
+	//}
 
 	/*
 	**	Special case to disable the APC from the Nod player.
@@ -688,13 +688,13 @@ bool HouseClass::Can_Build(TechnoTypeClass const * type, HousesType house) const
 	/*
 	**	Nod can build the advanced power plant at scenario #12.
 	*/
-	if (house == HOUSE_BAD &&
-		level >= 12 &&
-		type->What_Am_I() == RTTI_BUILDINGTYPE &&
-		((BuildingTypeClass const *)type)->Type == STRUCT_ADVANCED_POWER) {
+	//if (house == HOUSE_BAD &&
+	//	level >= 12 &&
+	//	type->What_Am_I() == RTTI_BUILDINGTYPE &&
+	//	((BuildingTypeClass const *)type)->Type == STRUCT_ADVANCED_POWER) {
 
-		level = type->Scenario;
-	}
+	//	level = type->Scenario;
+	//}
 
 	/*
 	**	Nod cannot build a helipad in the normal game.
@@ -709,13 +709,13 @@ bool HouseClass::Can_Build(TechnoTypeClass const * type, HousesType house) const
 	/*
 	**	GDI can build the sandbag wall only from scenario #9 onwards.
 	*/
-	if (house == HOUSE_GOOD &&
+	/*if (house == HOUSE_GOOD &&
 		level < 8 &&
 		type->What_Am_I() == RTTI_BUILDINGTYPE &&
 		((BuildingTypeClass const *)type)->Type == STRUCT_SANDBAG_WALL) {
 
 		return(false);
-	}
+	}*/
 
 	/*
 	**	GDI has a special second training mission. Adjust the scenario level so that
@@ -732,7 +732,9 @@ bool HouseClass::Can_Build(TechnoTypeClass const * type, HousesType house) const
 	}			
 
 	if (Debug_Cheat) level = 98;
-	return((pre & flags) == pre && type->Scenario <= level);
+	//return((pre & flags) == pre && type->Scenario <= level);
+	//SLM - If I've done this right, it should entirely disregard tech level here...
+	return((pre & flags) == pre);
 }
 
 
